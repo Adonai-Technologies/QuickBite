@@ -6,13 +6,17 @@ module.exports = {
 	theme: {
 	  extend: {
 		color:{
-			'primary':'#FF6366',
-			'primaryLight':'#FFA5A9',
-			'primaryDark':'#FF3A44',
-			'gray':'#f6f6f6',
-			'grayLight':'#f0f0f0',
-			'grayDark':'#9e9e9e',
-			
+			primary:"#ff8c52",
+			grey1:"#43484d",
+			grey2:"#5e6977",
+			grey3:"#86939e",
+			grey4:"#bdc6cf",
+			grey5:"#e1e8ee",
+			grey6:"#fafbfc",
+			grey7:"#ffffff",
+			CardComponent:"#86939e",
+			Cardbackground:"white",
+			statusbar:"#ff8c52",
 		}
 	  },
 	},
