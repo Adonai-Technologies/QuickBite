@@ -59,7 +59,7 @@ export default function SignInScreen({ navigation }) {
 
 			<View className='mt-10 mx-3'>
 				<Button
-				 onPress={() => {}}
+				 onPress={() => {navigation.navigate("HomeScreen")}}
 					title='SIGN IN'
 					buttonStyle={{
 						backgroundColor: "#ff8c52",

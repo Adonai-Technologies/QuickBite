@@ -5,7 +5,9 @@ import {
 } from "@react-navigation/stack";
 import SignInWelcomeScreen from "../components/authScreens/SignInWelcomeScreen";
 import SignInScreen from "../components/authScreens/SignInScreen";
-import { NavigationContainer } from "@react-navigation/native";
+import HomeScreen from "../components/screens/HomeScreen";
+
+
 
 const AuthStack = createStackNavigator();
 
@@ -20,6 +22,14 @@ export default function AuthNavigation() {
 			<AuthStack.Screen
 				name='SignInScreen'
 				component={SignInScreen}
+				options={{ headerShown: false, ...TransitionPresets.SlideFromRightIOS }}
+			/>
+			
+			
+			
+			<AuthStack.Screen
+				name='HomeScreen'
+				component={HomeScreen}
 				options={{ headerShown: false, ...TransitionPresets.SlideFromRightIOS }}
 			/>
 		</AuthStack.Navigator>
