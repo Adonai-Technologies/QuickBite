@@ -7,12 +7,13 @@ import {
 	Pressable,
 	Image,
 	Dimensions,
-    StyleSheet
+	StyleSheet,
 } from "react-native";
 import React, { useState } from "react";
 import HomeHeader from "../headers/HomeHeader";
 import { Icon } from "react-native-elements";
 import FoodCard from "../FoodCard";
+import Countdown from "react-native-countdown-component";
 
 const data = [
 	{
@@ -166,10 +167,10 @@ export default function HomeScreen({ navigation }) {
 
 	return (
 		<View className='flex-1'>
-			<HomeHeader title={"QuickBite"} type={"home"} />
+			<HomeHeader title={"QuickBite"} />
 
 			<ScrollView stickyHeaderIndices={[0]} showsVerticalScrollIndicator={true}>
-				<View className='mt-2 flex-row justify-center items-center gap-3'>
+				<View className=' flex-row justify-center items-center gap-3 bg-white pb-1.5'>
 					<TouchableOpacity onPress={() => setDelivery(true)}>
 						<View
 							className={`pt-2 pb-2 rounded-3xl mt-5 items-center justify-center pr-10 pl-10 font-bold text-xl ${
@@ -268,6 +269,19 @@ export default function HomeScreen({ navigation }) {
 					</Text>
 				</View>
 
+				<View className='flex-row mt-4 items-center'>
+					<Text className='ml-4 mr-2 text-2xl text-slate-500 font-bold mb-2'>
+						Options changing in
+					</Text>
+					<Countdown
+						until={3600}
+						timeToShow={["M", "S"]}
+						size={14}
+						digitStyle={{ backgroundColor: "lightgreen" }}
+						digitTxtStyle={{ color: "white", fontWeight: "bold" }}
+					/>
+				</View>
+
 				<View>
 					<FlatList
 						style={{ marginTop: 10, marginBottom: 10 }}
@@ -338,16 +352,14 @@ export default function HomeScreen({ navigation }) {
 					</Text>
 				</View>
 
-               
-              
 				<View style={{ paddingTop: 10 }}>
 					{restaurantData.map((item) => (
-						<View key={item.id} style={{ paddingBottom: 20 }}
-                            className='ml-3 pb-2 mr-2.5 border-b-1 mb-2 border border-slate-500 rounded-t-lg'
-                         >
-                            
+						<View
+							key={item.id}
+							style={{ paddingBottom: 20 }}
+							className='ml-3 pb-2 mr-2.5 border-b-1 mb-2 border border-slate-500 rounded-t-lg'>
 							<FoodCard
-                                screenWidth={screenWidth-10}
+								screenWidth={screenWidth - 10}
 								onPressFoodCard={() =>
 									navigation.navigate("FoodDetails", { item })
 								}
@@ -360,22 +372,19 @@ export default function HomeScreen({ navigation }) {
 								businessAddress={item.businessAddress}
 								farAway={item.farAway}
 								averageReview={item.averageReview}
-                                
 							/>
 						</View>
 					))}
 				</View>
-
-
 			</ScrollView>
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
-    image: {
+	image: {
 		borderTopLeftRadius: 5,
 		borderTopRightRadius: 5,
 		height: 150,
 	},
-})
+});

@@ -6,6 +6,8 @@ import {
 import SignInWelcomeScreen from "../components/authScreens/SignInWelcomeScreen";
 import SignInScreen from "../components/authScreens/SignInScreen";
 import HomeScreen from "../components/screens/HomeScreen";
+import ClientTabs from "../components/screens/ClientTabs";
+
 
 
 
@@ -28,8 +30,8 @@ export default function AuthNavigation() {
 			
 			
 			<AuthStack.Screen
-				name='HomeScreen'
-				component={HomeScreen}
+				name='ClientTabs'
+				component={ClientTabs}
 				options={{ headerShown: false, ...TransitionPresets.SlideFromRightIOS }}
 			/>
 		</AuthStack.Navigator>
