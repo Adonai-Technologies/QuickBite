@@ -59,7 +59,7 @@ export default function SignInScreen({ navigation }) {
 
 			<View className='mt-10 mx-3'>
 				<Button
-				 onPress={() => {navigation.navigate("ClientTabs")}}
+				 onPress={() => {navigation.navigate("MenuDrawerNavigatorScreen")}}
 					title='SIGN IN'
 					buttonStyle={{
 						backgroundColor: "#ff8c52",

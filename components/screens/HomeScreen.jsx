@@ -167,7 +167,7 @@ export default function HomeScreen({ navigation }) {
 
 	return (
 		<View className='flex-1'>
-			<HomeHeader title={"QuickBite"} />
+			<HomeHeader title={"QuickBite"} navigation={navigation} />
 
 			<ScrollView stickyHeaderIndices={[0]} showsVerticalScrollIndicator={true}>
 				<View className=' flex-row justify-center items-center gap-3 bg-white pb-1.5'>
@@ -184,7 +184,11 @@ export default function HomeScreen({ navigation }) {
 							</Text>
 						</View>
 					</TouchableOpacity>
-					<TouchableOpacity onPress={() => setDelivery(false)}>
+					<TouchableOpacity
+						onPress={() => {
+							setDelivery(false);
+							navigation.navigate("RestaurantMapScreen");
+						}}>
 						<View
 							className={`pt-2 pb-2 rounded-3xl mt-5 items-center justify-center pr-10 pl-10 font-bold text-xl ${
 								!delivery ? "bg-orange-400" : "bg-slate-200"
@@ -199,32 +203,33 @@ export default function HomeScreen({ navigation }) {
 					</TouchableOpacity>
 				</View>
 
-				<View className='flex-row items-center justify-center gap-3'>
-					<View className='flex-row items-center justify-center mt-6 ml-10 gap-3 rounded-3xl mr-7 bg-slate-200 pr-10 pl-5'>
-						<View className='flex-row items-center justify-end mt-2 '>
-							<Icon
-								type='material-community'
-								name='map-marker-outline'
-								size={28}
-								style={{ padding: 2 }}
-							/>
-							<Text className='font-bold pb-1 text-xl text-gray-400'>
-								123 Oxford St, Ghana
-							</Text>
+				<View className='flex-row items-center justify-center gap-3 ml'>
+					<View className='flex-row items-center justify-center'>
+						<View className='flex-row items-center justify-center mt-6 ml-3 rounded-3xl pr-4 gap-2  bg-slate-200'>
+							<View className='flex-row items-center justify-end mt-2 pl-2 '>
+								<Icon
+									type='material-community'
+									name='map-marker-outline'
+									size={28}
+									style={{ padding: 2 }}
+								/>
+								<Text className='font-bold text-xl text-gray-400'>
+									123 Oxford St, Ghana
+								</Text>
+							</View>
+							<View className='flex-row items-center justify-end rounded-3xl bg-white pl-2 pr-3'>
+								<Icon
+									type='material-community'
+									name='clock-time-four'
+									size={28}
+									style={{ padding: 2 }}
+								/>
+								<Text className='font-bold text-xl'>Now</Text>
+							</View>
 						</View>
-						<View className='flex-row items-center justify-end rounded-3xl bg-white pl-2 pr-3'>
-							<Icon
-								type='material-community'
-								name='clock-time-four'
-								size={28}
-								style={{ padding: 2 }}
-							/>
-							<Text className='font-bold pb-1 text-xl'>Now</Text>
+						<View className='flex-row items-center justify-end rounded-3xl  pl-2 pr-3 mt-5'>
+							<Icon type='material-community' name='tune' size={30} />
 						</View>
-					</View>
-
-					<View className='flex items-center justify-center mt-6 pr-10'>
-						<Icon type='material-community' name='tune' size={30} />
 					</View>
 				</View>
 
@@ -377,6 +382,18 @@ export default function HomeScreen({ navigation }) {
 					))}
 				</View>
 			</ScrollView>
+
+			{delivery && (
+				<View style={styles.floatingButton}>
+					<TouchableOpacity
+						onPress={() => navigation.navigate("RestaurantMapScreen")}>
+						<Icon name='place' type='material' color='orange' size={32} />
+						<Text style={{ fontSize: 12, color: "ligtgray", marginLeft: 5 }}>
+							Map
+						</Text>
+					</TouchableOpacity>
+				</View>
+			)}
 		</View>
 	);
 }
@@ -386,5 +403,17 @@ const styles = StyleSheet.create({
 		borderTopLeftRadius: 5,
 		borderTopRightRadius: 5,
 		height: 150,
+	},
+
+	floatingButton: {
+		position: "absolute",
+		width: 60,
+		height: 60,
+		alignItems: "center",
+		justifyContent: "center",
+		right: 30,
+		bottom: 30,
+		backgroundColor: "white",
+		borderRadius: 30,
 	},
 });

@@ -13,7 +13,9 @@ export default function Header({ title, type, navigation }) {
 			<Icon.Menu
 				size={28}
 				color={"white"}
-				onPress={() => {}}
+				onPress={() => {
+					navigation.toggleDrawer();
+				}}
 			/>
 			<View className='flex-1 items-center'>
 				<Text className='text-white text-3xl font-bold'>{title}</Text>
