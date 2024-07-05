@@ -13,8 +13,7 @@ import { Icon } from "react-native-elements";
 import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
 import { FlatList } from "react-native-gesture-handler";
-import { filter } from 'lodash'
-
+import { filter } from "lodash";
 
 const filterData = [
 	{
@@ -55,7 +54,6 @@ const filterData = [
 	},
 ];
 
-
 export default function SearchComponent() {
 	const [data, setData] = useState([...filterData]);
 	const navigation = useNavigation();
@@ -72,12 +70,7 @@ export default function SearchComponent() {
 		}
 	};
 
-	
-    
-    
-    
-    
-    const handleSearch = (text) => {
+	const handleSearch = (text) => {
 		const data = filter(filterData, (userSearch) => {
 			return contains(userSearch, text);
 		});
@@ -153,7 +146,7 @@ export default function SearchComponent() {
 							<TouchableOpacity
 								onPress={() => {
 									Keyboard.dismiss();
-									navigation.navigate("RestaurantSearchScreen", {
+									navigation.navigate("SearchResultScreen", {
 										item: item.name,
 									});
 									setModalVisible(false);
